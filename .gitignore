@@ -1,0 +1,14 @@
+# 컴파일된 자바 파일 제외
+*.class
+
+# 인텔리제이 설정 제외
+.idea/
+*.iml
+out/
+build/
+
+# 이클립스 설정 제외
+.metadata/
+.classpath
+.project
+.settings/
