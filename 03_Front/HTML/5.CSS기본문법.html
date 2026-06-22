@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+    <style>
+        /* 태그 선택자 */
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        
+        body{
+            background: #81d48f;
+            font-family: "Noto Sans KR", sans-serif;
+            font-weight: 500;
+        }
+
+        h1{
+            color: blue;
+            font-family: "맑은 고딕", sans-serif;
+            padding: 20px;
+        }
+
+        p{
+            color: rgb(212, 38, 204);
+            font-size: 16px;
+            line-height: 20px;
+        }
+
+        .highlight{
+            font-weight: 900;
+            color: rgb(240, 50, 36);
+        }
+
+        #main-description{
+            background-color: blueviolet;
+            text-decoration: underline;
+        }
+
+        .noto-sans-kr-myfilter {
+            font-family: "Noto Sans KR", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 300;
+            font-style: normal;
+        }
+        
+        /* 
+            padding/margin: 4면
+            padding/margin: 위/아래 오른/왼
+            padding/margin: 위 오른쪽 아래 왼쪽
+        */
+        div{
+            padding: 24px 6px;
+            margin: 12px 12px 12px 12px;
+            border: 1px solid white;
+        }
+
+        /* .box 안에있는 모든 p태그 */
+        .box p{
+            background-color: gray;
+        }
+
+        /* .box 바로 아래에 있는 p태그*/
+        .box > p{
+            color: red;
+        }
+
+
+    </style>
+</head>
+<body>
+    <h1 style="color : aqua;">CSS 기초</h1>
+    
+    <h2>선택자 연습</h2>
+
+    <p>
+        이 문장은 p태그로 작성되었다
+        그리고 이 <span class="highlight">단어</span>는 강조된다
+    </p>
+
+    <p id="main-description">
+        이 문장은 id='main-description'인 스타일이 적용됨
+    </p>
+
+    <br><br><br>
+    <hr>
+    <br><br><br>
+    <h3>관계선택자</h3>
+
+    <div class="box">
+        <span>
+            <p>.box안의 span 안의 p</p>
+            <span>.box안의 span 안의 span</span>
+        </span>
+    </div>
+
+    <div class="box">
+        <p>.box안의 p</p>
+        <span>.box안의 span</span>
+    </div>
+
+
+</body>
+</html>

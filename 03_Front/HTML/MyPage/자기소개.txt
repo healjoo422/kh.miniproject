@@ -1,0 +1,18 @@
+about
+    사진
+    이름
+    나이
+    짧은 자기소개 문구
+skill
+    Python
+    JAVA
+    MySQL
+    CSS
+    HTML
+career
+    근무이력
+MBTI
+    MBTI 설명
+Interested
+    온라인게임
+    

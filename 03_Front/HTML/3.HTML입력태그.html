@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 하이퍼링크 -->
+    <!-- a태그 : href(이동할 경로), target(_self, _blank) -->
+    <h1>하이퍼링크 : a태그</h1>
+
+    <!-- target="_blank" : 새 창에서 열기, target="_self" : 현재 창에서 열기 -->
+    <a href="https://www.naver.com" target="_blank">네이버로 이동</a>
+    <a href="https://www.naver.com" target="_self">네이버로 이동</a>
+
+    <a href="https://www.google.com" target="_blank">
+        <img src="./public/image.png" alt="빵빵이로고" width="200">
+    </a>
+
+    <!-- input / label 기본-->
+    <!-- label로 감싸면 글자를 눌러도 해당 입력칸이 선택된다.-->
+
+    <h1> 입력 기본 (input/lable)</h1>
+    아이디 : <input type="text"><br>
+    비밀번호 : <input type="password" ><br>
+    나이 : <input type="number" ><br>
+
+    <!-- 여러개중에 무조건 1개 선택 : select, radio-->
+    <h1>radio버튼</h1>
+    <h3>name속성으로 묶어주고 checked 속성으로 기본 선택가능</h3>
+    성별 : 
+    <label>
+        <input type="radio" name="gender" checked value="male">남자
+    </label>
+    <label>
+        <input type="radio" name="gender" value="female">여자
+    </label>
+
+    <h1>select태그</h1>
+    <h3>사용자에게 여러 옵션 중 하나를 선택하도록 제공</h3>
+    <select>
+        <option value="kor">한국어</option>
+        <option value="eng">영어</option>
+        <option value="jpn">일본어</option> 
+    </select>
+
+    <!--
+        form태그 : 사용자 입력을 서버로 전송하는 역할 (get vs post)
+        - action : 데이터를 전송할 URL
+        - method : 데이터 전송 방식 (get, post)
+    -->
+
+    <h1>form태그</h1>
+    <!-- 검색 후 주소창을 보면 ?query=검색어가 보임 -> get방식 -->
+    <!-- 
+        form태그안에 있는 submit버튼을 누르면 
+        form태그의 action에 지정된 URL로 데이터가 전송됨 
+        이때 전송되는 데이터는 from태그 안에 있는 
+        input, select, textarea등의 name속성이 있는 요소들의 
+        name과 value가 쌍으로 전송됨
+    -->
+    <form action="https://search.naver.com/search.naver" method="get">
+        <input type="text" name="query" placeholder="검색어 입력">
+        <button type="submit">검색</button>
+    </form>
+
+    <br><br><br>
+
+    <!-- form : post 방식 -->
+    <h1>form태그 : post 방식</h1>
+    
+    <!-- 
+        get방식으로 요청시 단점
+        1. URL에 데이터가 노출됨 (보안에 취약)
+        2. URL 길이 제한이 있음 (약 2048자), 넘으면 짤림
+
+        post방식은 
+        1. URL에 데이터가 노출되지 않음.
+        2. 데이터 크기에 제한이 없음 (서버 설정에 따라 다름)
+    -->
+
+    <!-- post방식은 주소창에 데이터가 보이지 않음 -->
+    <!--
+        required 속성 : 해당 입력 필드가 비어있으면 폼이 제출되지 않도록 하는 속성
+        placeholder 속성 : 입력 필드에 힌트 텍스트를 표시하는 속성
+    -->
+    <form action="/signup" method="post">
+        <input type="text" name="username" placeholder="아이디 입력" required>
+        <input type="password" name="password" placeholder="비밀번호 입력" required>
+        <button type="submit">로그인</button>
+    </form>
+
+    <!-- input 태그 속성 -->
+    <!-- type : 입력 필드의 종류 (text, password, number, email 등) -->
+    <!-- name : 서버로 전송될 때 해당 입력 필드의 이름 -->
+    <!-- placeholder : 입력 필드에 힌트 텍스트를 표시 -->
+    <!-- required : 해당 입력 필드가 비어있으면 폼이 제출되지 않도록 하는 속성 -->
+    
+    아이디: <input type="text" name="username" placeholder="아이디 입력" required><br>
+    비밀번호: <input type="password" name="password" placeholder="비밀번호 입력" required><br>
+    검색: <input type="text" name="query" placeholder="검색어 입력"><br>
+    나이: <input type="number" name="age" placeholder="나이 입력"><br>
+
+    <!-- textarea 태그 -->
+    <h1>textarea 태그</h1>
+    <!-- rows : 행 수, cols : 열 수 -->
+    <textarea 
+        name="message" 
+        placeholder="메시지 입력" 
+        rows="5" 
+        cols="40" 
+        style="resize: none;">
+    </textarea>
+
+    <!-- 숫자/날짜 입력 필드 -->
+    <h1>숫자입력 필드</h1>
+    <input 
+        type="number" 
+        name="score" 
+        placeholder="점수 입력"
+        min="0"
+        max="100"
+        step="3"
+        ><br>
+
+    <h1>날짜 입력 필드</h1>
+    <input type="date" name="birth" placeholder="생년월일 입력"><br>
+    <input type="month" name="month" placeholder="월 입력"><br>
+    <input type="week" name="week" placeholder="주 입력"><br>
+    <input type="time" name="time" placeholder="시간 입력"><br>
+    <input type="datetime-local" name="datetime" placeholder="날짜와 시간 입력"><br>
+
+    <!-- checkbox -->
+    <!-- 같은 name을 가진 데이터 중 여러개의 값을 선택할 수 있음 -->
+    <h1>체크박스</h1>
+    <label>
+        <input type="checkbox" name="hobby" value="sports">운동
+    </label>
+    <label>
+        <input type="checkbox" name="hobby" value="music">음악
+    </label>
+    <label> 
+        <input type="checkbox" name="hobby" value="travel">여행
+    </label>
+
+    <!-- button -->
+    <h1>버튼</h1>
+    <!-- type : 버튼의 종류 (submit, reset, button) -->
+    <!--submit, reset : 폼태그 전용버튼-->
+    <button type="submit">제출</button>
+    <button type="reset">초기화</button>
+
+    <button type="button" onclick="alert('버튼이 클릭되었습니다!')">클릭</button>
+</body>
+
+</body>
+</html>
