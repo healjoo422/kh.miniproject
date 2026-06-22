@@ -42,5 +42,39 @@ public class Run {
 		
 		List<Human> list = new ArrayList<>(set);
 		System.out.println(list);
+		
+		
+		
+		
+		//Set<E> 형태로 선언하는 제네릭 클래스
+		Set<Integer> mySet = new HashSet<>();
+		
+		// boolean add(E e) : 전달된 요소 e를 추가함
+		// 이미 해당 요소가 있어서 추가에 실패하면 false 반환
+		mySet.add(3);
+		mySet.add(-2);
+		
+		// boolean contains(Object o) : 자료구조 안에 o가 포함되어있는지 확인
+		// subSet이 mySet의 부분집합일 때, 매개변수로 subSet을 전달하면 true를 반환
+		mySet.contains(3);
+		
+		// boolean remove(Object o) : 전달된 요소를 삭제함
+		// 요소가 없어서 삭제에 실패하면 false
+		mySet.remove(-2);
+		
+		// int size() : 요소의 총 갯수 반환
+		mySet.size();
+		
+		// void clear() : 모든 요소를 제거
+		mySet.clear();
+		
+		// boolean isEmpty() : 집합이 비어있는지 확인
+		mySet.isEmpty();
+		
+		// Iterator<E> iterator() : 포함된 요소들을 담고있는 반복자 반환
+		// 순서가 있는 Set은 순서대로 반환, HashSet은 무작위순서
+		mySet.iterator();
+		
+		
 	}
 }

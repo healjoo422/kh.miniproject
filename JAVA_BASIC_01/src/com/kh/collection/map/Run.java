@@ -60,5 +60,48 @@ public class Run {
 			System.out.println(e.getKey()+ ", " +e.getValue());
 		}
 		
+		
+		
+		// Map<K, V> 형태로 선언되는 제네릭 클래스
+		Map<Integer, String> myMap = new HashMap<>();
+		
+		// V put(K key, V value) : key-value 쌍을 저장하고 기존 key에 매핑되어있던 value를 반환한다
+		// 새롭게 입력된 key라면 null을 반환
+		String str = myMap.put(1, "일");
+		System.out.println("put 반환값 : " + str);
+		str = myMap.put(1, "갱신된 일");
+		System.out.println("put 반환값 : " + str);
+		
+		// V get(K key) : key에 매핑되어있는 value를 반환
+		str = myMap.get(1);
+		System.out.println("get 반환값 : " + str);
+		
+		// int size() : 담겨있는 매핑의 갯수를 반환
+		int num = myMap.size();
+		System.out.println(num);
+		
+		// V remove(K key) : 전달된 key에 대응되는 key-value 쌍을 제거하고 value를 반환
+		// 대응되는 key-value쌍이 없다면 null 반환
+		str = myMap.remove(4);
+		System.out.println("remove 반환 : " + str);
+		
+		// V replace(K key, V value) : key에 매핑을 value로 교체하고 기존값을 반환한다
+		// put()과 다르게 새로운 값이 추가되지않아 조금 더 안전하다
+		myMap.replace(1, "또 바꾼 일");
+		
+		// Set<K> keySet() : key 집합을 Set으로 만들어 반환한다
+		Set<Integer> mySet = myMap.keySet();
+		
+		// boolean containsKey(K key) : key가 보관되어 있는지 체크해준다
+		// Value 버전인 containsValue도 있으나 Map은 key 기반의 hash구조를 가지고있다보니 성능이 좋은편은 아니다
+		System.out.println(myMap.containsKey(1));
+	
+		// void clear()
+		myMap.clear();
+		
+		// boolean isEmpty()
+		System.out.println(myMap.isEmpty());
+
+		
 	}
 }
