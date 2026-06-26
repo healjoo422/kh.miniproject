@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="./resources/js/test.js"></script>
+</head>
+<body>
+    <!--
+        웹의 3요소
+        - html : 웹의 문서구조를 정의하는 역할 (DOM Tree)
+        - css : 웹의 스타일을 정의하는 역할
+        - javascript : 웹의 동작을 정의하는 역할
+    -->
+
+    <h1>자바스크립트란?</h1>
+    <p>
+        웹브라우저에서 사용되는 인터프리터방식의 스크립트 언어
+        브라우저에 js엔진이 내장되어있어(크롬의 v8엔진, 사파리의 자바스크립트코어, 파이어폭스의 스파이더몽키 등) 브라우저에서 설치없이 실행 가능
+    </p>
+
+    <ol>
+        <li>inline : 태그 내부에 코드를 직접 작성하는 방식</li>
+        <li>internal : head태그 내부에 script태그를 이용해 작성하는 방식</li>
+        <li>external : 외부 js파일을 만들어 script태그를 이용해 불러오는 방식</li>
+    </ol>
+
+    <h4>1) inline</h4>
+    <p>태그 on이벤트명="js코드"</p>
+    <button type="button" onclick="alert('안녕하세요!')">inline_알림</button>
+    <button type="button" onclick="console.log('콘솔출력')">inline_콘솔</button>
+    <br><br>
+
+
+
+    <h4>2) internal</h4>
+    <p>head태그 내부에 script태그를 이용해 작성하는 방식</p>
+
+    <button type="button" id="btn1">internal_알림</button>
+    <button type="button" id="btn2">internal_콘솔</button>
+    <script>
+        // 선택자를 통해서 DOM의 요소를 가져올 수 있음
+        
+        // id가 btn1인 요소를 찾아서 클릭 이벤트를 등록
+        let btn1 = document.querySelector("#btn1");
+        btn1.onclick = function() {
+            alert("안녕하세요!");
+        };
+
+        // id가 btn2인 요소를 찾아서 클릭 이벤트를 등록
+        document.getElementById("btn2").addEventListener("click", function() {
+            console.log("콘솔출력");
+        });
+    </script>
+    
+    <h4>3) external</h4>
+    <p>외부 js파일을 만들어 script태그를 이용해 불러오는 방식</p>
+    
+    <button type="button" onclick="btnClick2()">external_콘솔</button>
+
+</body>
+</html>

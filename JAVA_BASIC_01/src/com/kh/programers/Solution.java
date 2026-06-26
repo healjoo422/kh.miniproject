@@ -1,11 +1,13 @@
 package com.kh.programers;
 
 class Solution {
-    public int[] solution(int n) {
-    	for(int i=1; ; i++) {
-    		if(i*7 > n)
-    			return i;
-    	}
+    public int solution(int[] box, int n) {
+        int answer = 0;
+		int num1 = box[0] / n;
+		int num2 = box[1] / n;
+		int num3 = box[2] / n;
+		answer = num1 * num2 * num3;
+        return answer;
     }
 }
 
@@ -19,8 +21,3 @@ class Solution {
 
 
 // A: 65 Z: 90 a: 97 z:122
-
-
-
-
-
