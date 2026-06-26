@@ -1,0 +1,23 @@
+{
+  "name": "browser-automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "count:tabs": "node count-tabs.js",
+    "open:debug-chrome": "powershell -ExecutionPolicy Bypass -File ./open-debug-chrome.ps1",
+    "login:programmers": "node login-programmers.js",
+    "generate:beginner": "node generate-beginner-archive.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "selenium-webdriver": "^4.45.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.61.1"
+  }
+}

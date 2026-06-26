@@ -1,12 +1,13 @@
 package com.kh.programers;
 
 class Solution {
-    public int solution(int[] box, int n) {
-        int answer = 0;
-		int num1 = box[0] / n;
-		int num2 = box[1] / n;
-		int num3 = box[2] / n;
-		answer = num1 * num2 * num3;
+    public String solution(String my_string, int num1, int num2) {
+        String answer = "";
+        char[] arr = my_string.toCharArray();
+        char temp = arr[num1];
+        arr[num1] = arr[num2];
+        arr[num2] = temp;
+        answer = new String(arr);
         return answer;
     }
 }
