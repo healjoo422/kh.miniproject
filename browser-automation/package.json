@@ -8,7 +8,9 @@
     "count:tabs": "node count-tabs.js",
     "open:debug-chrome": "powershell -ExecutionPolicy Bypass -File ./open-debug-chrome.ps1",
     "login:programmers": "node login-programmers.js",
-    "generate:beginner": "node generate-beginner-archive.js"
+    "generate:beginner": "node generate-beginner-archive.js",
+    "collect:unsolved": "node collect-unsolved-problems.js",
+    "solve:unsolved": "node solve-unsolved-problems.js"
   },
   "keywords": [],
   "author": "",
