@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        1. 아이디를 입력하고 "로그인"을 누르면 `localStorage`에 저장하고, 화면에 `"OO님 환영합니다"`와 "로그아웃" 버튼을 보여준다. (로그인 폼은 숨김)
+        2. "로그아웃"을 누르면 저장된 정보를 지우고(`removeItem`) 처음 화면(로그인 폼)으로 돌아간다.
+        3. 페이지가 로드될 때(`window.onload` 또는 `DOMContentLoaded`) 저장된 로그인 정보가 있으면 자동으로 로그인 상태 화면을 보여준다.
+        4. (보너스) 로그인 시 아이디가 영문/숫자 5~12자 형식인지 정규식으로 검증하고, 형식이 아니면 로그인하지 않는다.
+    -->
+    <div id="loginBox">
+        아이디 : <input type="text" id="userIdInput">
+        <button id="loginBtn">로그인</button>
+    </div>
+    <div id="welcomeBox" style="display:none;">
+        <span id="welcomeMsg"></span>
+        <button id="logoutBtn">로그아웃</button>
+    </div>
+
+    <script>
+        const loginBox = document.querySelector("#loginBox");
+        const welcomeBox = document.querySelector("#welcomeBox");
+        const userIdInput = document.querySelector("#userIdInput");
+        const loginBtn = document.querySelector("#loginBtn");
+        const logoutBtn = document.querySelector("#logoutBtn");
+        const welcomeMsg = document.querySelector("#welcomeMsg");
+
+        function login() {
+            const userId = userIdInput.value;
+            if (!/^[a-zA-Z0-9]{5,12}$/.test(userId)) {
+                alert("아이디는 영문/숫자 5~12자 형식이어야 합니다.");
+                return;
+            }
+            localStorage.setItem("userId", userId);
+            showWelcomeBox(userId);
+        }
+
+        function logout() {
+            localStorage.removeItem("userId");
+            loginBox.style.display = "block";
+            welcomeBox.style.display = "none";
+        }
+
+        function showWelcomeBox(userId) {
+            welcomeMsg.textContent = `${userId}님 환영합니다`;
+            loginBox.style.display = "none";
+            welcomeBox.style.display = "block";
+        }
+
+        loginBtn.addEventListener("click", login);
+        logoutBtn.addEventListener("click", logout);
+
+        window.addEventListener("DOMContentLoaded", function(e) {
+            const savedUserId = localStorage.getItem("userId");
+            if (savedUserId) {
+                showWelcomeBox(savedUserId);
+            }
+        });
+
+
+    </script>
+
+</body>
+</html>

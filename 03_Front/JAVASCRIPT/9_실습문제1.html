@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .area {
+            border: 1px solid #000;
+            min-height: 50px;
+            padding: 10px;
+            margin: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <!--
+        제출 버튼을 누르면 폼의 기본 동작(새로고침)을 막는다. (preventDefault)
+        - 아이디: 영문/숫자 5~12자
+        - 비밀번호: 8자 이상이며 영문과 숫자를 모두 포함
+        - 비밀번호 확인: 비밀번호와 일치
+        - 이메일: 이메일 형식
+        각 항목 아래에 통과/실패 메시지를 표시한다. (통과는 초록, 실패는 빨강)
+        모든 항목이 통과하면 결과 영역에 `"OO님, 가입을 환영합니다!"` 와 입력한 아이디·이메일을 출력한다.
+    -->
+    <h3>회원가입 폼 검증</h3>
+    <form id="my-form">
+        아이디 : <input type="text" id="id" placeholder="아이디"><p id="idCheck"></p>
+        비밀번호 : <input type="password" id="pw" placeholder="비밀번호"><p id="pwCheck"></p>
+        비밀번호 확인 : <input type="password" id="pw2" placeholder="비밀번호 확인"><p id="pw2Check"></p>
+        이메일 : <input type="text" id="email" placeholder="ex@example.com"><p id="emailCheck"></p>
+        <button type="submit">가입</button>
+    </form>
+    
+    <div class="area" id="result"></div>
+
+    <script>
+        const form = document.querySelector("#my-form");
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const id = document.querySelector("#id").value;
+            const idCheck = document.querySelector("#idCheck");
+            const pw = document.querySelector("#pw").value;
+            const pwCheck = document.querySelector("#pwCheck");
+            const pw2 = document.querySelector("#pw2").value;
+            const pw2Check = document.querySelector("#pw2Check");
+            const email = document.querySelector("#email").value;
+            const emailCheck = document.querySelector("#emailCheck");
+            const result = document.querySelector("#result");
+
+            if(id.length >= 5 && id.length <= 12 && /^[a-zA-Z0-9]+$/.test(id)) {
+                idCheck.textContent = "사용 가능";
+                idCheck.style.color = "green";
+            } else {
+                idCheck.textContent = "영문/숫자 5~12자만 가능";
+                idCheck.style.color = "red";
+            }
+
+            if(pw.length >= 8 && /[a-zA-Z]/.test(pw) && /[0-9]/.test(pw)) {
+                pwCheck.textContent = "사용 가능";
+                pwCheck.style.color = "green";
+            } else {
+                pwCheck.textContent = "8자 이상, 영문+숫자 포함";
+                pwCheck.style.color = "red";
+            }
+
+            if(pw === pw2) {
+                pw2Check.textContent = "비밀번호 일치합니다";
+                pw2Check.style.color = "green";
+            } else {
+                pw2Check.textContent = "비밀번호가 다릅니다";
+                pw2Check.style.color = "red";
+            }
+
+            if(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$/.test(email)) {
+                emailCheck.textContent = "올바른 형식";
+                emailCheck.style.color = "green";
+            } else {
+                emailCheck.textContent = "올바른 형식이 아닙니다";
+                emailCheck.style.color = "red";
+            }
+
+            if(idCheck.style.color === "green" && pwCheck.style.color === "green" && pw2Check.style.color === "green" && emailCheck.style.color === "green") {
+                result.textContent = `${id}님, 가입을 환영합니다! 이메일: ${email}`;
+            } else {
+                result.textContent = "입력값을 다시 확인해주세요.";
+            }
+        })
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .area {
+            border: 1px solid #000;
+            min-height: 50px;
+            padding: 10px;
+            margin: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h1>정규표현식</h1>
+    <p>
+        문자열에서 특정 패턴을찾고, 검사하고, 치환하는 표현방식
+    </p>
+
+    <h3> 1) 표현식 객체 생성 및 메서드 - test / exec </h3>
+
+    <h3> 이메일 검증 </h3>
+    이메일 : <input type="text" id="email-input" placeholder="example@example.com">
+    <button onclick="checkEmail()">검증</button>
+    <div id="area4" class="area"></div>
+    <script>
+        function checkEmail() {
+            const emailInput = document.querySelector("#email-input").value;
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            const area4 = document.querySelector("#area4");
+            if (emailPattern.test(emailInput)) {
+                area4.textContent = "유효한 이메일입니다.";
+            } else {
+                area4.textContent = "유효하지 않은 이메일입니다.";
+            }
+        }
+    </script>
+</body>
+</html>

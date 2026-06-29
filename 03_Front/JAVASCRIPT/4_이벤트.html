@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .area {
+            border: 1px solid #000;
+            min-height: 50px;
+            padding: 10px;
+            margin: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Event</h1>
+    <p>
+        이벤트 : 브라우저에서 발생하는 모든 동작(click, keyup, keydown, mouseover, mouseout, load, drag)
+        이벤트 핸들러 : 트정 이벤트가 발생했을 때 실행되는 함수
+    </p>
+
+    <h3>1) 고전 이벤트 모델 - element.onclick = 함수</h3>
+    <p>동일 이벤트에 1개만 등록됨</p>
+    <button id="btn1">실행</button>
+    <button id="btn2">이벤트 제거</button>
+    <div id="area1" class="area"></div>
+    <script>
+        const area1 = document.querySelector("#area1");
+        const btn1 = document.querySelector("#btn1");
+
+        btn1.onclick = function(){
+            area1.innerHTML += "btn1 클릭됨<br>";
+        }
+
+        const btn2 = document.querySelector("#btn2");
+        btn2.onclick = function(){
+            btn1.onclick = null;
+        }
+    </script>
+
+    <h3>2) 표준 이벤트 모델 - element.addEventListener(이벤트명, 함수)</h3>
+    <p>동일 이벤트에 여러 핸들러 등록 가능, removeEventListener()로 제거 가능</p>
+    <button id="btn3">실행</button>
+    <div id="area2" class="area"></div>
+    <script>
+        const area2 = document.querySelector("#area2");
+        const btn3 = document.querySelector("#btn3");
+
+        function clickHandlerA(){
+            area2.innerHTML += "이벤트함수 A<br>";
+        }
+
+        function clickHandlerB(){
+            area2.innerHTML += "이벤트함수 B<br>";
+        }
+
+        btn3.addEventListener("click", clickHandlerA);
+        btn3.addEventListener("click", clickHandlerB);
+        btn3.addEventListener("mouseenter", function(){
+            console.log("mouseenter 이벤트 발생");
+        });
+        
+    </script>
+    <h3>3) 이벤트 객체</h3>
+
+    <button id="btn4">
+        <span>이벤트 객체 확인용</span>
+    </button>
+    <div id="area3" class="area"></div>
+    
+    <script>
+        function eventTarget(ev){
+            console.log(ev.target);
+            console.log(this);
+        }
+
+        const btn4 = document.querySelector("#btn4");
+        btn4.addEventListener("click", eventTarget);
+    </script>
+
+
+    <h3> preventDefault() - 기본동작막기 </h3>
+    <form id="my-form">
+        <input type="text" placeholder="입력하세요.">
+        <button type="submit">제출</button>
+    </form>
+    <div id="area4" class="area"></div>
+    <script>
+        const myForm = document.querySelector("#my-form");
+        myForm.addEventListener("submit", function(ev){
+            ev.preventDefault(); // submit 이벤트의 기본동작인 새로고침을 막음
+            document.querySelector("#area4").textContent = "submit 이벤트 발생";   
+        })
+    </script>
+</body>
+</html>

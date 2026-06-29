@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .area {
+            border: 1px solid #000;
+            min-height: 50px;
+            padding: 10px;
+            margin: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h1>웹스토리지</h1>
+    <p>
+        브라우저에 데이터를 key-value 형태로 저장하는 공간<br>
+        - localStorage : url단위로 저장, 브라우저를 닫아도 데이터가 유지됨<br>
+        - sessionStorage : 탭단위 저장, 브라우저를 닫으면 데이터가 사라짐<br>
+
+        메서드 : setItem(key, value), getItem(key), removeItem(key), clear()<br>
+        웹 스토리지는 '문자열'만 저장이 가능
+    </p>
+
+    <h3>localStorage</h3>
+    <p>
+        사용자설정, 비회원 장바구니 
+        오늘하루 보지 않기 등등
+    </p>
+    값 : <input type="text" id="memo1" placeholder="localStorage">
+    <button onclick="saveMemo1()">저장</button>
+    <button onclick="loadMemo1()">불러오기</button>
+    <button onclick="removeMemo1()">삭제</button>
+    <div id="area1" class="area"></div>
+    <script>
+        function saveMemo1(){
+            const memo = document.querySelector("#memo1").value;
+            localStorage.setItem("memo", memo);
+        }
+
+        function loadMemo1(){
+            const memo = localStorage.getItem("memo");
+            document.querySelector("#area1").textContent = memo;
+        }
+
+        function removeMemo1(){
+            localStorage.removeItem("memo");
+        }
+    </script>
+
+    <h3></h3>    
+
+
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .area {
+            border: 1px solid #000;
+            min-height: 50px;
+            padding: 10px;
+            margin: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h1>요소 접근</h1>
+
+    <h3>getElementById()</h3>
+    <div class="area" id="area1"></div>
+    <button onclick="accessId();">ID 접근</button>
+    <script>
+        function accessId() {
+            const area = document.getElementById('area1');
+            area.textContent = "getElementById()로 접근한 내용";
+        }
+    </script>
+
+    <h3>getElementByTagName</h3>
+    <ul>
+        <li>첫 번째 li</li>
+        <li>두 번째 li</li>
+        <li>세 번째 li</li>
+    </ul>
+    <button onclick="accessTag();">태그접근</button>
+    <script>
+        function accessTag() {
+            const liList = document.getElementsByTagName('li');
+            console.log("개수 : " + liList.length);
+            for (let i = 0; i < liList.length; i++) {
+                console.log(liList[i].innerText);
+            }
+        }
+    </script>
+
+    <h3>선택자 접근 querySelector()</h3>
+    <div id="tmp1">테스트용</div>
+    <p class="item">항목 A</p>
+    <p class="item">항목 B</p>
+    <p class="item">항목 C</p>
+    <button onclick="accessSelector();">선택자 접근</button>
+    <script>
+        function accessSelector() {
+            const one = document.querySelector('#tmp1');
+            console.log(one);
+            one.style.fontweight = "bold";
+
+            const all = document.querySelectorAll('.item');
+            console.log(all);
+            all.forEach(function(e, i){
+                e.style.color = "red";
+            });
+        }
+    </script>
+
+    <h3>요소 생성 / 추가 / 제거</h3>
+    <div id="wrap" class="area"></div>
+    <button onclick="addElement();">요소 추가</button>
+    <button onclick="removeElement();">마지막 제거</button>
+    <script>
+        function addElement(){
+            const wrapEl = document.querySelector("#wrap");
+            
+            const h6El = document.createElement('h6');
+            h6El.textContent = "추가된 내용" + (document.querySelectorAll("#wrap h6").length);
+            wrapEl.appendChild(h6El);
+        }
+
+        function removeElement(){
+            const h6List = document.querySelectorAll("#wrap h6");
+            if(h6List.length > 0){
+                h6List[h6List.length - 1].remove();
+            }
+        }
+    </script>
+
+</body>
+</html>
