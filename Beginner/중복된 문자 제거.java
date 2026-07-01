@@ -11,6 +11,8 @@
 - 중복된 문자 중 가장 앞에 있는 문자를 남깁니다.
 */
 
+import java.util.HashSet;
+
 class Solution_009 {
     public String solution(String my_string) {
         StringBuilder sb = new StringBuilder();
@@ -20,6 +22,20 @@ class Solution_009 {
             char c = my_string.charAt(i);
             if (!seen[c]) {
                 seen[c] = true;
+                sb.append(c);
+            }
+        }
+
+        return sb.toString();
+    }
+
+    public String solutionWithHashSet(String my_string) {
+        StringBuilder sb = new StringBuilder();
+        HashSet<Character> seen = new HashSet<>();
+
+        for (int i = 0; i < my_string.length(); i++) {
+            char c = my_string.charAt(i);
+            if (seen.add(c)) {
                 sb.append(c);
             }
         }

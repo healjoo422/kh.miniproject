@@ -9,15 +9,13 @@
 
 class Solution_003 {
     public int solution(int n) {
-        return n / gcd(n, 6);
-    }
-
-    private int gcd(int a, int b) {
+        int a = n;
+        int b = 6;
         while (b != 0) {
             int temp = a % b;
             a = b;
             b = temp;
         }
-        return a;
+        return n / a;
     }
 }
